@@ -1,0 +1,24 @@
+name: Build Armbian Image for Orange Pi R1 board
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      repository-projects: write
+    steps:
+      - uses: armbian/build@main
+        with:
+          armbian_token: ${{ secrets.GITHUB_TOKEN }}
+          armbian_board: orangepi-r1
+          armbian_release: trixie
+          armbian_target: build
+          armbian_ui: minimal
+          armbian_runner_clean: "yes"
+          armbian_release_title: Orange Pi R1
+          armbian_release_body: |
+            Armbian image for [Orange Pi R1](http://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/details/Orange-Pi-R1.html) board.
+            Build with [Armbian tools](https://github.com/armbian/build).
